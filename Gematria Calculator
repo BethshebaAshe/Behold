@@ -1,0 +1,210 @@
+import sys
+import string
+import unicodedata
+import codecs
+
+Go = "Y"
+while Go == "Y":
+    MyWord = (str(input("Please enter a word or phrase and press Enter...")))
+    MyWord = str.lower(MyWord)
+    Result=0
+    index = 0
+    index2 = 1
+    Heb = ""
+    """To change the value of any letter or digraph, simply change the value at the end of: result=result+"""
+    while index < len(MyWord):
+        letter = MyWord[index]
+        if index2 < len(MyWord):
+            letter2 = MyWord[index2]
+            index2 = index2 + 1
+
+            """The first part of the code checks for digraphs like Sh, Th, Ch etc in the text"""
+        if letter == "s" and letter2 == "h":
+            Result = Result + 3
+            index = index + 1
+            index2 = index2 + 1
+            Heb = Heb + "ש"
+        if letter == "c" and letter2 == "h":
+            Result = Result + 8
+            index = index + 1
+            index2 = index2 + 1
+            Heb = Heb + "ח"
+        if letter == "t" and letter2 == "h":
+            Result = Result + 4
+            index = index + 1
+            index2 = index2 + 1
+            Heb = Heb + "ת"
+        if letter == "t" and letter2 == "s":
+            Result = Result + 90
+            index = index + 1
+            index2 = index2 + 1
+            Heb = Heb + "צ"
+
+            """This next part checks for letters that are not part of a digraph, like S, T, C or P."""
+        if letter == "s" and letter2 != "h":
+            Result = Result + 60
+            Heb = Heb + "ס"
+        if letter == "t" and letter2 != "h" and letter2 != "s":
+            Result = Result + 9
+            Heb = Heb + "ט"
+        if letter == "c" and letter2 != "h":
+            Result = Result + 8
+            Heb = Heb + "ח"
+        if letter == "p" and letter2 == "h":
+            Result = Result + 80
+            Heb = Heb + "פ"
+            index = index + 1
+            index2 = index2 + 1
+        if letter == "a":
+            Result = Result +1
+            Heb = Heb + "א"
+        if letter == "b":
+            Result = Result + 2
+            Heb = Heb + "ב"
+        if letter == "g":
+            Result = Result + 3
+            Heb = Heb + "ג"
+        if letter == "d":
+            Result = Result + 4
+            Heb = Heb + "ד"
+        if letter == "e":
+            Result = Result + 5
+            Heb = Heb + "ה"
+        if letter == "f":
+            Result = Result + 80
+            Heb = Heb + "פ"
+        if letter == "h":
+            Result = Result + 5
+            Heb = Heb + "ה" 
+        if letter == "i":
+            Result=Result+10
+            Heb = Heb + "י"
+        if letter == "j":
+            Result = Result + 10
+            Heb = Heb + "י" 
+        if letter == "k":
+            Result = Result + 20
+            Heb = Heb + "ע"
+        if letter == "l":
+            Result = Result + 30
+            Heb = Heb + "ל" 
+        if letter == "m":
+            Result=Result+40
+            Heb = Heb + "מ" 
+        if letter == "n":
+            Result=Result+50
+            Heb = Heb + "נ"
+        if letter == "o":
+            Result = Result + 70
+            Heb = Heb + "ע"
+        if letter == "p" and letter2 != "h":
+            Result = Result + 80
+            Heb = Heb + "פ"
+        if letter == "q":
+            Result = Result + 100
+            Heb = Heb + "ק"
+        if letter == "r":
+            Result = Result + 200
+            Heb = Heb + "ר"
+        if letter == "u":
+            Result = Result + 6
+            Heb = Heb + "ו"
+        if letter == "v":
+            Result = Result + 6
+            Heb = Heb + "ו"
+        if letter == "w":
+            Result = Result + 6
+            Heb = Heb + "ו"
+        if letter == "x":
+            Result = Result + 60
+            Heb = Heb + "ס"
+        if letter == "y":
+            Result = Result + 10
+            Heb = Heb + "י"
+        if letter == "z":
+            Result = Result + 7
+            Heb = Heb + "ז"
+        if letter == "א":
+            Result = Result + 1
+            Heb = Heb + "A"
+        if letter == "ב":
+            Result = Result + 2
+            Heb = Heb + "B"
+        if letter == "ג":
+            Result = Result + 3
+            Heb = Heb + "G"
+        if letter == "ש":
+            Result = Result + 3
+            Heb = Heb + "Sh"
+        if letter == "ד":
+            Result = Result + 4
+            Heb = Heb + "D"
+        if letter == "ת":
+            Result = Result + 4
+            Heb = Heb + "Th"
+        if letter == "ה":
+            Result = Result + 5
+            Heb = Heb + "H"
+        if letter == "ו":
+            Result = Result + 6
+            Heb = Heb + "V"
+        if letter == "ז":
+            Result = Result + 7
+            Heb = Heb + "Z"
+        if letter == "ח":
+            Result = Result + 8
+            Heb = Heb + "Ch"
+        if letter == "ט":
+            Result = Result + 9
+            Heb = Heb + "T"
+        if letter == "י":
+            Result = Result + 10
+            Heb = Heb + "I"
+        if letter == "כ":
+            Result = Result + 20
+            Heb = Heb + "K"
+        if letter == "ל":
+            Result = Result + 30
+            Heb = Heb + "L"
+        if letter == "מ":
+            Result = Result + 40
+            Heb = Heb + "M"
+        if letter == "ם":
+            Result = Result + 40
+            Heb = Heb + "M"
+        if letter == "נ":
+            Result = Result + 50
+            Heb = Heb + "N"
+        if letter == "ן":
+            Result = Result + 50
+            Heb = Heb + "N"
+        if letter == "ס":
+            Result = Result + 60
+            Heb = Heb + "S"
+        if letter == "ע":
+            Result = Result + 70
+            Heb = Heb + "O"
+        if letter == "פ":
+            Result = Result + 80
+            Heb = Heb + "P"
+        if letter == "ף":
+            Result = Result + 80
+            Heb = Heb + "P"
+        if letter == "צ":
+            Result = Result + 90
+            Heb = Heb + "Ts"
+        if letter == "ץ":
+            Result = Result + 90
+            Heb = Heb + "Ts"
+        if letter == "ק":
+            Result = Result + 100
+            Heb = Heb + "Q"
+        if letter == "ר":
+            Result = Result + 200
+            Heb = Heb + "R"
+        if letter == " ":
+            Heb = Heb + " "
+        index = index + 1
+
+    print(MyWord.capitalize(), "=", Result, Heb.capitalize(), file=sys.stdout)
+    Go = (str(input("Go again? Y/N.")))
